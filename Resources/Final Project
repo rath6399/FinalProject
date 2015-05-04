@@ -1,0 +1,320 @@
+var container2 = Ti.UI.createView({backgroundColor: "white", layout: "vertical"});
+		
+var layout2 = ({
+		title: "Parent 1",
+		isparent: true,
+		opened: false,
+		sub: ({
+				title: "Child 1"},
+			{
+				title: "Child 2"
+			}
+		)},
+	{
+		title: "Parent 2",
+		isparent: true,
+		opened: false,
+		sub: ({
+				title: "Child 1"},
+			{
+				title: "Child 2"
+			})
+	});
+	
+var tableView2 = Ti.UI.createTableView({
+	top: 0,
+	height: Ti.Platform.displayCaps.platformHeight,
+	data: layout
+});
+		
+		
+var tableDataLoad2 = [{
+    sectionNum:  1,
+    sectionTitle:  '+Alternative Email',
+    data:  [{
+        level:  1,
+        title:  '-Enter Email',
+        child:  true
+    }]
+}, {
+    sectionNum:  2,
+    sectionTitle:  '+Connect To Facebook',
+    data:  [{
+        level:  1,
+        title:  '-Enter Facebook Login',
+        child:  true
+    }]
+}];
+ 
+var win4 = null;
+var viewTable2 = null;
+var viewheight2 = 33;
+var imageheight2 = 18;
+var tableData2 = null;
+var sectionsData2 = [];
+ 
+//var minusImg = '/minus.png'; //Haven't got these images yet
+//var plusImg = '/plus.png';
+ 
+function sectionProcess(inParam) {'use strict';
+    var iCnt2 = 0;
+    var tCnt2 = 0;
+    var baseLevel2 = 0;
+    var rowStart2 = 0;
+ 
+    var secTableData2 = viewTable.getData();
+    var sectionData2 = secTableData2[inParam.source.secValue - 1];
+    var rowData2 = sectionData2.rows;
+    var setViewHeight2 = (inParam.source.EXPANDED)  ?  0  :  viewheight2;
+    var setImgHeight = (inParam.source.EXPANDED)  ?  0  :  imageheight2;
+    var childLevelChk2 = {};
+    var keyChk2 = 'AA0';
+ 
+    inParam.source.EXPANDED = (inParam.source.EXPANDED)  ?  false  :  true;
+ 
+    while(iCnt2 < rowData.length) {
+        var setRowHeight2 = setViewHeight2;
+        var setImgRowHeight2 = setImgHeight2;
+ 
+        if (setRowHeight2 > 0) {
+            if (rowData[iCnt2].LEVEL === 1) {
+                baseLevel += 1;
+                keyChk2 = 'AA' + baseLevel;
+                childLevelChk2[keyChk2] = [];
+                childLevelChk2[keyChk2][1] = rowData[iCnt2].CHILDEXPANDED;
+            } else {
+                var currLevel2 = rowData[iCnt2].LEVEL;
+                var prevLevel2 = currLevel2 - 1;
+ 
+                childLevelChk2[keyChk2][currLevel2] = (childLevelChk2[keyChk2][prevLevel2]) ? rowData[iCnt2].CHILDEXPANDED : false;
+ 
+                setRowHeight2 = (childLevelChk2[keyChk2][prevLevel2])  ?  setViewHeight2  :  0;
+                setImgRowHeight2 = (childLevelChk2[keyChk2][prevLevel2])  ?  setImgHeight2  :  0;
+            }
+        }
+        if (rowData2[iCnt2].EXPANDED) {
+            rowData2[iCnt2].height = setRowHeight2;
+            rowData2[iCnt2].children[0].height = setImgRowHeight2;
+        }
+        iCnt2 += 1;
+    }
+    return;
+}
+function expandCollapseView(inParam) {'use strict';
+    var inLevel2 = inParam.rowData2.LEVEL;//ask Lori for help with this... can't figure out why it is producing an error
+    var inExpanded2 = inParam.rowData2.CHILDEXPANDED;
+    var rowTableData2 = viewTable2.data;
+ 
+    // need to find the section of the row ...
+    var secLevel2 = 0;
+    var totalRowCnt2 = 0;
+    var sectionRows2 = null;
+    var sectionStartRow2 = 0;
+    var currentSectionRow2 = 0;
+    var childLevelChk2 = [];
+ 
+    for ( secLevel2 = 0; secLevel2 < rowTableData2.length; secLevel2 += 1) {
+        totalRowCnt2 = totalRowCnt2 + rowTableData2[secLevel2].rows.length;
+ 
+        if (totalRowCnt2 >= (inParam.index + 1)) {
+            sectionRows2 = rowTableData2[secLevel2].rows;
+            sectionStartRow2 = totalRowCnt2 - sectionRows2.length;
+            currentSectionRow2 = inParam.index - sectionStartRow2;
+            break;
+        }
+    }
+    var setViewHeight2 = (inExpanded)  ?  0  :  viewheight2;
+    var setImgHeight2 = (inExpanded)  ?  0  :  imageheight2;
+    var tCnt2 = 0;
+    var tmpLevel2 = 0;
+    var bCnt2 = 0;
+ 
+    tCnt2 = currentSectionRow2 + 1;
+ 
+    childLevelChk2[inLevel2] = (inExpanded2)  ?  false  :  true;
+ 
+    while (tCnt2 < sectionRows2.length) {
+        tmpLevel2 = sectionRows2[tCnt2].LEVEL;
+ 
+        if (tmpLevel2 <= inLevel2) {
+            break;
+        }
+        childLevelChk2[tmpLevel2] = (childLevelChk2[tmpLevel2 - 1])  ?  sectionRows2[tCnt2].CHILDEXPANDED  :  false;
+ 
+        sectionRows2[tCnt2].height = setViewHeight2;
+        sectionRows2[tCnt2].children[0].height = setImgHeight2;
+        sectionRows2[tCnt2].EXPANDED = (inExpanded2)  ?  false  :  true;
+        bCnt2 = tCnt2 + 1;
+ 
+        if (bCnt2 < sectionRows2.length) {
+            while (sectionRows2[bCnt2].LEVEL > tmpLevel2) {
+                // here is the complex one.... A child level can be expanded but a parent level can be collapsed so need to validate which it is ...
+                childLevelChk2[sectionRows2[bCnt2].LEVEL] = (childLevelChk2[sectionRows2[bCnt2].LEVEL - 1])  ?  sectionRows2[bCnt2].CHILDEXPANDED  :  false;
+                var setRowHeight2 = (childLevelChk2[sectionRows2[bCnt2].LEVEL - 1])  ?  setViewHeight2  :  0;
+                var setImgRowHeight2 = (childLevelChk2[sectionRows2[bCnt2].LEVEL - 1])  ?  setImgHeight2  :  0;
+ 
+                if (sectionRows2[bCnt2].EXPANDED) {
+                    sectionRows2[bCnt2].height = setRowHeight2;
+                    sectionRows2[bCnt2].children[0].height = setImgRowHeight2;
+                }
+                bCnt2 += 1;
+ 
+                if (bCnt2 >= sectionRows2.length) {
+                    break;
+                }
+            }
+        }
+        tCnt2 = bCnt2;
+    }
+    inParam.rowData2.CHILDEXPANDED = (inExpanded2)  ?  false  :  true;
+    inParam.rowData2.children[0].image = (inExpanded2)  ?  plusImg  :  minusImg;
+ 
+    return;
+}
+function buildTableRow(inParam) {'use strict';
+    var row2 = Ti.UI.createTableViewRow({
+        title:  inParam.title,
+        height:  viewheight,
+        indentionLevel:  inParam.level,
+        backgroundGradient: {
+            type:  'linear',
+            colors:  [{
+                color:  '#998716',
+                offset:  0.0
+            }, {
+                color:  '#998716',
+                offset:  0.12
+            }, {
+                color:  '#998716',
+                offset:  0.85
+            }]
+        },
+        color:  '#000000',
+        font: {
+            fontSize:  14,
+            fontWeight:  'normal'
+        },
+        LEVEL:  inParam.level,
+        EXPANDED:  (inParam.level < 2)  ?  true  :  false,
+        CHILDEXPANDED:  (inParam.level < 1)  ?  true  :  false,
+        CHILD:  inParam.child
+    });
+    //var rowImg = Ti.UI.createImageView({
+      //  right:  30,
+      //  height:  18,
+      //  width:  18,
+      //  top:  7,
+      //  image:  (inParam.child)  ?  plusImg  :  ''
+    //});
+    var clickView2 = Ti.UI.createView({
+        top:  0,
+        left:  0,
+        right:  0,
+        bottom:  0,
+        backgroundColor:  'transparent'
+    });
+    //row.add(rowImg);
+    row.add(clickView2);
+ 
+    row.height = (inParam.level < 2)  ?  viewheight  :  0;
+    //rowImg.height = (inParam.level < 2)  ?  imageheight  :  0;
+ 
+    return row;
+}
+function processData() {'use strict';
+    var dCnt2 = 0;
+ 
+    for ( dCnt2 = 0; dCnt2 < tableDataLoad2.length; dCnt2 += 1) {
+        var sectionView2 = Ti.UI.createView({
+            top:  0,
+            left:  0,
+            right:  0,
+            height:  33,
+            backgroundGradient: {
+                type:  'linear',
+                colors:  [{
+                    color:  '#FFFFFF',
+                    offset:  0.0
+                }, {
+                    color:  '#FFFFFF',
+                    offset:  0.12
+                }, {
+                    color:  '#FFFFFF',
+                    offset:  0.85
+                }]
+            }
+        });
+        var sectionViewLabel2 = Ti.UI.createLabel({
+            top:  0,
+            left:  0,
+            width:  '100%',
+            height:  '100%',
+            text:  '  ' + tableDataLoad[dCnt2].sectionTitle,
+            textAlign:  'left',
+            color:  "#000000",
+            font: {
+                fontSize:  14,
+                fontWeight:  'bold'
+            },
+            secValue:  tableDataLoad[dCnt2].sectionNum,
+            EXPANDED:  true
+        });
+        sectionView.add(sectionViewLabel2);
+        sectionView.addEventListener('touchend', sectionProcess);
+ 
+        var section2 = Ti.UI.createTableViewSection({
+            headerView:  sectionView
+        });
+        var rCnt2 = 0;
+ 
+        while (rCnt2 < tableDataLoad[dCnt2].data.length) {
+            section2.add(buildTableRow2(tableDataLoad2[dCnt2].data[rCnt2]));
+            rCnt2 += 1;
+        }
+        sectionsData2.push(section2);
+    }
+    viewTable.setData(sectionsData2);
+ 
+    return;
+}
+function displayWindow() {'use strict';
+    win4 = Ti.UI.createWindow({
+        backgroundColor:  '#FFFFFF'
+    });
+    var screenTitle2 = Ti.UI.createLabel({
+        top:  10,
+        left:  10,
+        right:  10,
+        height:  50,
+        text:  'Settings',
+        textAlign:  'center',
+        color:  '#000000',
+        font: {
+            fontSize:  18,
+            fontWeight:  'bold'
+        }
+    });
+    var viewTable2 = Ti.UI.createTableView({
+        top:  65,
+        left:  20,
+        right:  20,
+        bottom:  50,
+        rowHeight:  0,
+        backgroundColor:  'transparent',
+        separatorColor:  '#000000',
+        separatorStyle:  0
+    });
+    viewTable2.addEventListener('touchend', expandCollapseView);
+ //var checkbox = Ti.UI.createSwitch({
+    //style:Ti.UI.Android.SWITCH_STYLE_CHECKBOX,
+    //title:"Sound Enabled",
+    //value:true
+//});
+ 
+//checkbox.addEventListener("change", function(e){
+    //Ti.API.info("The checkbox has been set to " + e.value);
+//});
+ 
+    win4.add(screenTitle2);
+    win4.add(viewTable2);
+    //win4.add(checkbox);

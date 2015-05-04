@@ -1,0 +1,7 @@
+"C:/Users/Joyanna/Documents/Titanium_Studio_Workspace/FinalProject/build/android/gen/android/support/v7/appcompat/R.java"
+"C:/Users/Joyanna/Documents/Titanium_Studio_Workspace/FinalProject/build/android/gen/com/packtpub/hotshot/FinalProject/ApplicationStylesheet.java"
+"C:/Users/Joyanna/Documents/Titanium_Studio_Workspace/FinalProject/build/android/gen/com/packtpub/hotshot/FinalProject/FinalprojectActivity.java"
+"C:/Users/Joyanna/Documents/Titanium_Studio_Workspace/FinalProject/build/android/gen/com/packtpub/hotshot/FinalProject/FinalprojectAppInfo.java"
+"C:/Users/Joyanna/Documents/Titanium_Studio_Workspace/FinalProject/build/android/gen/com/packtpub/hotshot/FinalProject/FinalprojectApplication.java"
+"C:/Users/Joyanna/Documents/Titanium_Studio_Workspace/FinalProject/build/android/gen/com/packtpub/hotshot/FinalProject/R.java"
+"C:/Users/Joyanna/Documents/Titanium_Studio_Workspace/FinalProject/build/android/gen/ti/modules/titanium/ui/R.java"
