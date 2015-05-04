@@ -503,8 +503,23 @@ var winNews = Ti.UI.createWindow({
 backgroundColor: '#000000'
 });
 
+var MyCog = Ti.UI.createImageView({
+	top: 5,
+	height: '30dp',
+	width: '30dp',
+	right: 5
+});
+
+MyCog.image = '\cog.png';
+
+winNews.add(MyCog);
+
+MyCog.addEventListener('click', function(e){
+	settingsPage();
+});
+
 var view = Ti.UI.createView({
-top: '0px',
+top: 40,
 height: '10%',
 bottom: 5
 });
@@ -522,7 +537,7 @@ var alertData = [ 'Moose on Campus!', 'Weather Advisory',
 
 var table = Ti.UI.createTableView({
 top: '100px',
-bottom: 0,
+height: '40%',
   data: alertData,
 });
 
@@ -672,7 +687,7 @@ table.addEventListener('click', function(e)
 //Starting of second table code
 
 var viewWeather = Ti.UI.createView({
-top: 150,
+top: '40%',
 height: '10%',
 });
 
@@ -680,7 +695,7 @@ var labelWeather = Ti.UI.createLabel({
 text : ' Recent News',
 color : '#b18e5f',
 top: 10,
-font: {fontSize: 20, fontWeight:'bold'},
+font: {fontSize: '20dp', fontWeight:'bold'},
 textAlign : 'left'
 });
 
@@ -688,7 +703,7 @@ var tableDataWeather = [ 'College of Law Receives High Grades From preLaw Magazi
 'UI College of Art and Architecture Announces Winners of 24th Annual High School Art Exhibition'];
 
 var tableWeather = Ti.UI.createTableView({
-top: '40%',
+top: '50%',
   data: tableDataWeather,
 });
 
@@ -1208,8 +1223,19 @@ function ScheduleWindow() {
 		title: 'Schedule'
 	});
 	
-	var viewImage = Ti.UI.createImageView({
-		height: '20%'
+	var mycog = Ti.UI.createImageView({
+	top: 5,
+	height: '30dp',
+	width: '30dp',
+	right: 5
+	});
+
+	mycog.image = '\cog.png';
+	
+	winEvent.add(mycog);
+	
+	mycog.addEventListener('click', function(e){
+		settingsPage();
 	});
 	
 	var viewHeadMon = Ti.UI.createView({
@@ -1347,7 +1373,7 @@ function ScheduleWindow() {
 	};
 	
 	var tableEvent = Ti.UI.createTableView({
-		//top: '20%'
+		top: 40,
 		backgroundColor: '#000005',
 		data : [sectionMonday, sectionTuesday]
 	});
