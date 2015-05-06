@@ -136,7 +136,7 @@ function main(){
 
 
 function EventsPage(){
-		var winEvent = Ti.UI.createWindow({
+	var winEvent = Ti.UI.createWindow({
 		title: 'Events',
 		backgroundColor: '#000005'
 	});
@@ -155,6 +155,28 @@ function EventsPage(){
 	mycog.addEventListener('click', function(e){
 		settingsPage();
 	});
+	
+	var logo = Ti.UI.createImageView({
+		top: 5,
+		left: '34%',
+		height: '40dp',
+		width: '120dp'
+	});
+	
+	logo.image = 'ui_logo_white.png';
+	
+	winEvent.add(logo);
+	
+		var search = Ti.UI.createImageView({
+		top: 5,
+		left: 5,
+		height: '40dp',
+		width: '40dp'
+	});
+	
+	search.image = 'Search.png';
+	
+	winEvent.add(search);
 	
 	//var viewImage = Ti.UI.createImageView({
 		//top: '0%',
@@ -506,6 +528,28 @@ function NewsPage(){
 	MyCog.addEventListener('click', function(e){
 		settingsPage();
 	});
+	
+	var logo = Ti.UI.createImageView({
+		top: 5,
+		left: '34%',
+		height: '40dp',
+		width: '120dp'
+	});
+	
+	logo.image = 'ui_logo_white.png';
+	
+	winNews.add(logo);
+	
+		var search = Ti.UI.createImageView({
+		top: 5,
+		left: 5,
+		height: '40dp',
+		width: '40dp'
+	});
+	
+	search.image = 'Search.png';
+	
+	winNews.add(search);
 	
 	var view = Ti.UI.createView({
 		top: '50dp',
@@ -865,7 +909,7 @@ function NewsPage(){
 
 function settingsPage(){
 	var win = Ti.UI.createWindow({
-	    backgroundColor : '#B18E5F',
+	    backgroundColor : '#000005',
 	    layout : 'vertical',
 	    title: 'Settings'
 	});
@@ -874,7 +918,7 @@ function settingsPage(){
 		/*title: 'Settings',
 	    backgroundColor: '000005',
 	    url: "settings.js"*/
-	   	backgroundColor : '#B18E5F',
+	   	backgroundColor : '#000005',
     	layout : 'vertical',
    		title: 'Settings'
 		
@@ -883,16 +927,11 @@ function settingsPage(){
 	var basicSwitch = Ti.UI.createSwitch({
 	  titleOn:'Notifications Enabled',
 	  titleOff:'Notifications Disabled',
-	  backgroundColor:'#000005',
+	  backgroundColor:'#B18E5F',
 	  fontSize: 25,
-	  color:'#000005',
-	  backgroundColor: '#9f9d9d',
-	  borderRadius:10,
-	  borderColor: '#000005',
-	  borderWidth:2,
+	  fontColor:'#9f9d9d',
 	  value:true,
-	  width: '90%', 
-	  height:'auto',
+	  width: '90%', height:'auto',
 	  top:'5',
 	  bottom:'5'
 	});
@@ -906,17 +945,15 @@ function settingsPage(){
 	var basicSwitch2 = Ti.UI.createSwitch({
 		titleOn:'Bblearn Enabled',
 		titleOff:'Bblearn Disabled',
+		backgroundColor:'#B18E5F',
 		fontSize: 25,
-		color:'#000005',
-	    backgroundColor: '#9f9d9d',
-	    borderRadius:10,
-	    borderColor: '#000005',
-	    borderWidth:2,
+		fontColor:'#9f9d9d',
 		value:true, 
-		width: '90%', 
-		height: 'auto',
-		bottom: '5'
-		});
+		width: '90%', height: 'auto', 
+		bottom: '5',
+		left:20,
+		right: 20
+	});
 	
 	winSettings.add(basicSwitch2);
 	
@@ -926,11 +963,8 @@ function settingsPage(){
 	
 	var aButton = Ti.UI.createButton({
 		title : 'Feed Options',
-		color:'#000005',
-	    backgroundColor: '#9f9d9d',
-	    borderRadius:10,
-	    borderColor: '#000005',
-	    borderWidth:2,
+		backgroundColor:'#B18E5F',
+		fontColor:'#000005',
 		height : 'auto',
 		width : 200,
 		bottom : '5'
@@ -944,20 +978,52 @@ function settingsPage(){
 	        layout : 'vertical',
 	        height : '100%',
 	        width : '100%',
-	        backgroundColor: '#b18e5f',
+	        backgroundColor: '#000005',
 	        title: 'Feed Options',
 	        fontSize: 40,
 	    });
-
 	    
+	      // Create a Button.
+	    var save = Ti.UI.createButton({
+	        title : 'save',
+	        backgroundColor: '#9f9d9d',
+	        fontColor: '#000005',
+	        height : 50,
+	        width : 100,
+	        top :10,
+	        bottom: 5,
+	        left: 5
+	    });
+	 
+	    // Listen for click events.
+	    save.addEventListener('click', function() {
+	        win.close();
+	    });
+	 
+	    var cancel = Ti.UI.createButton({
+	        title : 'cancel',
+	        backgroundColor:'#9f9d9d',
+	        fontColor:'#000005',
+	        fontSize: 20,
+	        height : 50,
+	        width : 100,
+	        bottom: 5,
+	        left: 5
+	    });
+	 
+	    cancel.addEventListener('click', function() {
+	        win.close();
+	    });
+	 
+	  win.add(save);
+	  win.add(cancel);
 	      
 	var Data=[
 	    {
 	        title:'+Colleges',
 	        backgroundColor: '#B18E5F',
-	        color:'#000005',
-	        //borderColor:'#0000005',
-	        //borderWidth:2,
+	        borderColor:'#0000005',
+	        boarderWidth:2,
 	        Size:35,
 	        option:0,
 	        press:0,
@@ -977,9 +1043,8 @@ function settingsPage(){
 	     {
 	        title:'+Sports',
 	        backgroundColor: '#B18E5F',
-	        color:'#000005',
-	        //borderColor:'#0000005',
-	        //borderWidth:2,
+	        borderColor:'#0000005',
+	        boarderWidth:2,
 	        Size:35,
 	        option:0,
 	        press:0,
@@ -995,9 +1060,8 @@ function settingsPage(){
 	     {
 	        title:'+Clubs',
 	        backgroundColor: '#B18E5F',
-	        color:'#000005',
-	        //borderColor:'#0000005',
-	        //borderWidth:2,
+	        borderColor:'#0000005',
+	        boarderWidth:2,
 	        Size:35,
 	        option:0,
 	        press:0,
@@ -1011,9 +1075,8 @@ function settingsPage(){
 	    {
 	        title:'+Theater',
 	        backgroundColor: '#B18E5F',
-	        color:'#000005',
-	        //borderColor:'#0000005',
-	        //borderWidth:2,
+	        borderColor:'#0000005',
+	        boarderWidth:2,
 	        Size:35,
 	        option:0,
 	        press:0,
@@ -1026,9 +1089,8 @@ function settingsPage(){
 	    {
 	        title:'+Music',
 	        backgroundColor: '#B18E5F',
-	        color:'#000005',
-	        //borderColor:'#0000005',
-	        //borderWidth:2,
+	        borderColor:'#0000005',
+	        boarderWidth:2,
 	        Size:35,
 	        option:0,
 	        press:0,
@@ -1040,9 +1102,8 @@ function settingsPage(){
 	    },{
 	        title:'+News',
 	        backgroundColor: '#B18E5F',
-	        color:'#000005',
-	        //borderColor:'#0000005',
-	        //borderWidth:2,
+	        borderColor:'#0000005',
+	        boarderWidth:2,
 	        Size:35,
 	        option:0,
 	        press:0,
@@ -1056,9 +1117,8 @@ function settingsPage(){
 	    {
 	        title:'+Other',
 	        backgroundColor: '#B18E5F',
-	        color:'#000005',
-	        //borderColor:'#0000005',
-	        //borderWidth:2,
+	        borderColor:'#0000005',
+	        boarderWidth:2,
 	        Size:35,
 	        option:0,
 	        press:0,
@@ -1071,10 +1131,9 @@ function settingsPage(){
 	 ];
 	 
 	var table = Ti.UI.createTableView({
-	  top:'0%',
-	  backgroundColor:'#B18E5F',
-	  height: '75%',
-	  data:Data
+	  data:Data,
+	  backgroundColor: '#b18e5f',
+	  height: '50%'
 	});
 	 
 	table.addEventListener('click', function(e) 
@@ -1092,7 +1151,7 @@ function settingsPage(){
 	            var lbl=Ti.UI.createLabel({
 	                text:e.rowData.element[i].name,
 	                height:Ti.UI.SIZE,
-	                color:'#FFFFFF', 
+	                color:'#9f9d9d', 
 	                font:
 	                {
 	                    weight:'bold',
@@ -1127,67 +1186,7 @@ function settingsPage(){
 	});
 	 
 	 
-	win.add(table);
-	
-var saveview = Ti.UI.createView({
-	    	 backgroundColor:'#b18e5f',
-	         layout:'vertical',
-	         height:100,
-	         bottom: '0%',
-	         left: '0%',
-	         width:'100%'
-	    });
-	    
-	    win.add(saveview);
-	    	    
-	      // Create a Button.
-	    var save = Ti.UI.createButton({
-	        title : 'save',
-	        backgroundColor: '#9f9d9d',
-	        color:'#000005',
-	        borderRadius:10,
-	        borderColor: '#000005',
-	        borderWidth:2,
-	        fontSize: 20,
-	        height : '40%',
-	        width : '90%',
-	        top:5,
-	    });
-	 
-	    // Listen for click events.
-	    save.addEventListener('click', function() {
-	        win.close();
-	    });
-	    //var cancelview = Ti.UI.createView({
-	    	 //backgroundColor:'#b18e5f',
-	         //layout:'vertical',
-	         //bottom: '0%',
-	         //height:100,
-	         //right: '0%',
-	         //width:'45%'
-	    //});
-	    
-	    //win.add(cancelview);	 
-	    
-	    var cancel = Ti.UI.createButton({
-	        title : 'cancel',
-	        backgroundColor: '#9f9d9d',
-	        color:'#000005',
-	        borderRadius:10,
-	        borderColor: '#000005',
-	        borderWidth:2,
-	        fontSize: 20,
-	        height : '40%',
-	        width : '90%',
-	        top:5,
-	    });
-	 
-	    cancel.addEventListener('click', function() {
-	        win.close();
-	    });
-	 
-	  saveview.add(save);
-	  saveview.add(cancel);    
+	win.add(table);    
 	 
 	// Create a Label.
 	//var name = Ti.UI.createLabel({
@@ -1224,11 +1223,8 @@ var saveview = Ti.UI.createView({
 	
 	var bButton = Ti.UI.createButton({
 		title : 'Login/Log out',
-		color:'#000005',
-	    backgroundColor: '#9f9d9d',
-	    borderRadius:10,
-	    borderColor: '#000005',
-	    borderWidth:2,
+		backgroundColor:'#B18E5F',
+		fontColor:'#000005',
 		height : 'auto',
 		width : 200,
 		bottom : '5',
@@ -1279,6 +1275,28 @@ function ScheduleWindow() {
 	mycog.addEventListener('click', function(e){
 		settingsPage();
 	});
+	
+	var logo = Ti.UI.createImageView({
+		top: 5,
+		left: '34%',
+		height: '40dp',
+		width: '120dp'
+	});
+	
+	logo.image = 'ui_logo_white.png';
+	
+	winEvent.add(logo);
+	
+		var search = Ti.UI.createImageView({
+		top: 5,
+		left: 5,
+		height: '40dp',
+		width: '40dp'
+	});
+	
+	search.image = 'Search.png';
+	
+	winEvent.add(search);
 	
 	var viewHeadMon = Ti.UI.createView({
 		height: 17,
@@ -1389,16 +1407,17 @@ function ScheduleWindow() {
 		eventLabel = Ti.UI.createLabel({
 			text : tuesdayDataE[i],
 			top : '0%',
-			height : '50%',
-			font : {fontSize:'16dp'}
+			height : '70%',
+			font : {fontSize:'16dp'},
+			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 		});
 		theRow.add(eventLabel);
 	
 		placeLabel = Ti.UI.createLabel({
 			text : tuesdayDataP[i],
 			font : {fontSize:'13dp'},
-			top : '50%',
-			height : '50%',
+			top : '70%',
+			height : '30%',
 			left : '15%',
 		});
 		theRow.add(placeLabel);
@@ -1407,8 +1426,8 @@ function ScheduleWindow() {
 			text : tuesdayDataT[i],
 			font : {fontSize:'13dp'},
 			left : '75%',
-			top : '50%',
-			height : '50%'
+			top : '70%',
+			height : '30%'
 		});
 		theRow.add(timeLabel);
 	
@@ -1448,7 +1467,7 @@ function ScheduleWindow() {
 	});
 	var labelBarkNote = Ti.UI.createLabel({
 		top: '30%',
-		text: 'Notes:		2015 Barker Trading Competition April 13-24.\n Visit the website for additional information about this \n event. \n\n Sponsored by: Barker Capital Management and Trading \n Program and the College of Business and Economics.'
+		text: 'Notes:		2015 Barker Trading Competition April 13-24. Visit the website for additional information about this event. Sponsored by: Barker Capital Management and Trading Program and the College of Business and Economics.'
 	});
 	
 	viewBark.add(labelBarkTitle);
@@ -1481,7 +1500,7 @@ function ScheduleWindow() {
 	});
 	var labelMountNote = Ti.UI.createLabel({
 		top: '30%',
-		text: 'Notes:		Introduction rides on area trails on Moscow Mountain.\n\n Cost: $5 includes transportation \n Rides: April 13 & May 4,meet at the Outdoor Program \n Office at 4:30pm.'
+		text: 'Notes:		Introduction rides on area trails on Moscow Mountain. Cost: $5 includes transportation Rides: April 13 & May 4,meet at the Outdoor Program Office at 4:30pm.'
 	});
 	
 	viewMount.add(labelMountTitle);
