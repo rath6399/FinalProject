@@ -39,7 +39,11 @@ function Login(){
 	 
 	var buttonLogin = Ti.UI.createButton({
 	    title:'Login',
-	    backgroundColor: '#000005',
+	    backgroundColor: '#9f9d9d',
+	    borderRadius: 10,
+	    borderWidth: 2,
+	    borderColor: '#000005',
+	    color: '#000005',
 	    left:50,
 	    right:50,
 	    top:8,
@@ -60,6 +64,10 @@ function Login(){
 	var buttonGuest = Ti.UI.createButton({
 	    title:'Guest',
 	    backgroundColor: '#9f9d9d',
+	    borderRadius: 10,
+	    borderWidth: 2,
+	    borderColor: '#000005',
+	    color: '#000005',
 	    left:50,
 	    right:50,
 	    top:8,
@@ -217,7 +225,8 @@ function EventsPage(){
 		eventLabel = Ti.UI.createLabel({
 			text : mondayDataE[i],
 			top : '0%',
-			height : '50%',
+			height : '70%',
+			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 			font : {fontSize:'16dp'}
 		});
 		theRow.add(eventLabel);
@@ -225,8 +234,8 @@ function EventsPage(){
 		placeLabel = Ti.UI.createLabel({
 			text : mondayDataP[i],
 			font : {fontSize:'13dp'},
-			top : '50%',
-			height : '50%',
+			top : '70%',
+			height : '30%',
 			left : '15%',
 		});
 		theRow.add(placeLabel);
@@ -235,8 +244,8 @@ function EventsPage(){
 			text : mondayDataT[i],
 			font : {fontSize:'13dp'},
 			left : '75%',
-			top : '50%',
-			height : '50%'
+			top : '70%',
+			height : '30%'
 		});
 		theRow.add(timeLabel);
 	
@@ -259,10 +268,10 @@ function EventsPage(){
 	allRows2 = [];
 	
 	for (var i = 0; i < tuesdayDataE.length; i++) {
-		if(tuesdayDataP[i] == 'EP 202' || tuesdayDataP[i] == 'TLC 030'){
+		if(tuesdayDataP[i] == 'EP 202'){
 			theRow = Ti.UI.createTableViewRow({
 				eventInfo: tuesdayDataE[i],
-				height: '90dp'
+				height: '100dp'
 			});
 		} else if(tuesdayDataP[i] == 'CNR 10'){
 			theRow = Ti.UI.createTableViewRow({
@@ -279,7 +288,8 @@ function EventsPage(){
 		eventLabel = Ti.UI.createLabel({
 			text : tuesdayDataE[i],
 			top : '0%',
-			height : '50%',
+			height : '70%',
+			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 			font : {fontSize:'16dp'}
 		});
 		theRow.add(eventLabel);
@@ -287,8 +297,8 @@ function EventsPage(){
 		placeLabel = Ti.UI.createLabel({
 			text : tuesdayDataP[i],
 			font : {fontSize:'13dp'},
-			top : '50%',
-			height : '50%',
+			top : '70%',
+			height : '30%',
 			left : '15%',
 		});
 		theRow.add(placeLabel);
@@ -297,8 +307,8 @@ function EventsPage(){
 			text : tuesdayDataT[i],
 			font : {fontSize:'13dp'},
 			left : '75%',
-			top : '50%',
-			height : '50%'
+			top : '70%',
+			height : '30%'
 		});
 		theRow.add(timeLabel);
 	
@@ -317,7 +327,8 @@ function EventsPage(){
 	
 	
 	var winBark = Ti.UI.createWindow({
-		title: 'Event Information'
+		title: 'Event Information',
+		backgroundColor: '#000005'
 	});
 	var viewBark = Ti.UI.createView();
 	var labelBarkTitle = Ti.UI.createLabel({
@@ -339,11 +350,7 @@ function EventsPage(){
 	});
 	var labelBarkNote = Ti.UI.createLabel({
 		top: '30%',
-		text: 'Notes:		2015 Barker Trading Competition April 13-24.'+ '\n'+  
-			  '				Visit the website for additional information about this'+'\n'+
-			  '				event.' + '\n'+'\n'+ 
-		      '				Sponsored by: Barker Capital Management and Trading'+'\n'+
-		      '				Program and the College of Business and Economics.'
+		text: 'Notes:		2015 Barker Trading Competition April 13-24. Visit the website for additional information about this event. Sponsored by: Barker Capital Management and Trading Program and the College of Business and Economics.'
 	});
 	
 	viewBark.add(labelBarkTitle);
@@ -354,7 +361,8 @@ function EventsPage(){
 	winBark.add(viewBark);
 	
 	var winMount = Ti.UI.createWindow({
-		title: 'Event Information'
+		title: 'Event Information',
+		backgroundColor: '#000005'
 	});
 	var viewMount = Ti.UI.createView();
 	var labelMountTitle = Ti.UI.createLabel({
@@ -376,10 +384,7 @@ function EventsPage(){
 	});
 	var labelMountNote = Ti.UI.createLabel({
 		top: '30%',
-		text: 'Notes:		Introduction rides on area trails on Moscow Mountain.'+ '\n'+'\n'+  
-			  '				Cost: $5 includes transportation' + '\n'+ 
-		      '				Rides: April 13 & May 4,meet at the Outdoor Program \n'+
-		      '				Office at 4:30pm.'
+		text: 'Notes:		Introduction rides on area trails on Moscow Mountain. Cost: $5 includes transportation Rides: April 13 & May 4,meet at the Outdoor Program Office at 4:30pm.'
 	});
 	
 	viewMount.add(labelMountTitle);
@@ -390,7 +395,8 @@ function EventsPage(){
 	winMount.add(viewMount);
 	
 	var winHow = Ti.UI.createWindow({
-		title: 'Event Information'
+		title: 'Event Information',
+		backgroundColor: '#000005'
 	});
 	var viewHow = Ti.UI.createView();
 	var labelHowTitle = Ti.UI.createLabel({
@@ -412,20 +418,7 @@ function EventsPage(){
 	});
 	var labelHowNote = Ti.UI.createLabel({
 		top: '30%',
-		text: 'Notes:		This powerful hour of training is packed with essential'+'\n'+
-		'				how-to’s you need to identify and disarm emotionally'+'\n'+
-		'				charged situations in the early stages, before tensions'+'\n'+
-		'				escalate out of control. You’ll discover how to hold your'+'\n'+
-		'				own in any situation and how to turn conflict into an'+'\n'+
-		'				opportunity to build stronger, more positive working'+'\n'+
-		'				relationships. That’s just for starters! You’ll also get tips'+'\n'+
-		'				for staying in control when tears threaten, and strategies'+'\n'+
-		'				for shutting down the “pressure-cooker” tactics of others.'+'\n'+
-		'				You will be amazed by just how easy it is to tame'+'\n'+
-		'				unproductive emotions and build cooperation once'+'\n'+
-		'				you have mastered these new techniques. For locations'+'\n'+
-		'				outside of Moscow, please contact pdl@uidaho.edu for'+'\n'+
-		'				registration and webinar access information.'
+		text: 'Notes:		This powerful hour of training is packed with essential how-to’s you need to identify and disarm emotionally charged situations in the early stages, before tensions escalate out of control. You’ll discover how to hold your own in any situation and how to turn conflict into an opportunity to build stronger, more positive working relationships. That’s just for starters! You’ll also get tips for staying in control when tears threaten, and strategies for shutting down the “pressure-cooker” tactics of others. You will be amazed by just how easy it is to tame unproductive emotions and build cooperation once you have mastered these new techniques. For locations outside of Moscow, please contact pdl@uidaho.edu for registration and webinar access information.'
 	});
 	
 	viewHow.add(labelHowTitle);
@@ -436,7 +429,8 @@ function EventsPage(){
 	winHow.add(viewHow);
 	
 	var winFull = Ti.UI.createWindow({
-		title: 'Event Information'
+		title: 'Event Information',
+		backgroundColor: '#000005'
 	});
 	var viewFull = Ti.UI.createView();
 	var labelFullTitle = Ti.UI.createLabel({
@@ -458,21 +452,7 @@ function EventsPage(){
 	});
 	var labelFullNote = Ti.UI.createLabel({
 		top: '30%',
-		text: 'Notes:		Learn about fully funded grants for study, research'+'\n'+
-		'				or English Teaching Assistantships in more than 140'+'\n'+
-		'				countries. Two sessions will be offered on Tuesday, April'+'\n'+
-		'				14th. The first	session is from 11:30 a.m. to 12:20 p.m.'+'\n'+
-		'				in TLC Room 145. The second session is from 12:30 to'+'\n'+
-		'				1:20 p.m. in TLC Room 146. The sessions will be'+'\n'+
-		'				presented by Lee Rivers, Assistant Manager of Outreach'+'\n'+
-		'				for the Institute of International Education; and'+'\n'+
-		'				Joanie Andruss, Fulbright Student Alumni Ambassador.'+'\n'+
-		'				The University of Idaho Fulbright representative, Holly'+'\n'+
-		'				LaHann, will also be available to answer questions about'+'\n'+
-		'				applying for a Fulbright grant through the UI.	All'+'\n'+
-		'				undergraduate and graduate students interested in'+'\n'+
-		'				learning more about the	Fulbright Program are welcome'+'\n'+
-		'				to attend.'
+		text: 'Notes:		Learn about fully funded grants for study, research or English Teaching Assistantships in more than 140 countries. Two sessions will be offered on Tuesday, April 14th. The first session is from 11:30 a.m. to 12:20 p.m. in TLC Room 145. The second session is from 12:30 to	1:20 p.m. in TLC Room 146. The sessions will be	presented by Lee Rivers, Assistant Manager of Outreach for the Institute of International Education; and Joanie Andruss, Fulbright Student Alumni Ambassador. The University of Idaho Fulbright representative, Holly LaHann, will also be available to answer questions about applying for a Fulbright grant through the UI. All	undergraduate and graduate students interested in learning more about the Fulbright Program are welcome	to attend.'
 	});
 	
 	viewFull.add(labelFullTitle);
@@ -1107,7 +1087,9 @@ function settingsPage(){
 	 ];
 	 
 	var table = Ti.UI.createTableView({
-	  data:Data
+	  data:Data,
+	  backgroundColor: '#b18e5f',
+	  height: '50%'
 	});
 	 
 	table.addEventListener('click', function(e) 
@@ -1312,7 +1294,8 @@ function ScheduleWindow() {
 		eventLabel = Ti.UI.createLabel({
 			text : mondayDataE[i],
 			top : '0%',
-			height : '50%',
+			height : '70%',
+			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 			font : {fontSize:'16dp'}
 		});
 		theRow.add(eventLabel);
@@ -1320,8 +1303,8 @@ function ScheduleWindow() {
 		placeLabel = Ti.UI.createLabel({
 			text : mondayDataP[i],
 			font : {fontSize:'13dp'},
-			top : '50%',
-			height : '50%',
+			top : '70%',
+			height : '30%',
 			left : '15%',
 		});
 		theRow.add(placeLabel);
@@ -1330,8 +1313,8 @@ function ScheduleWindow() {
 			text : mondayDataT[i],
 			font : {fontSize:'13dp'},
 			left : '75%',
-			top : '50%',
-			height : '50%'
+			top : '70%',
+			height : '30%'
 		});
 		theRow.add(timeLabel);
 	
