@@ -39,7 +39,11 @@ function Login(){
 	 
 	var buttonLogin = Ti.UI.createButton({
 	    title:'Login',
-	    backgroundColor: '#000005',
+	    backgroundColor: '#9f9d9d',
+	    borderRadius: 10,
+	    borderWidth: 2,
+	    borderColor: '#000005',
+	    color: '#000005',
 	    left:50,
 	    right:50,
 	    top:8,
@@ -60,6 +64,10 @@ function Login(){
 	var buttonGuest = Ti.UI.createButton({
 	    title:'Guest',
 	    backgroundColor: '#9f9d9d',
+	    borderRadius: 10,
+	    borderWidth: 2,
+	    borderColor: '#000005',
+	    color: '#000005',
 	    left:50,
 	    right:50,
 	    top:8,
