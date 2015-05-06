@@ -52,7 +52,7 @@ function Login(){
 	viewLogin.add(buttonLogin);
 	 
 	 buttonLogin.addEventListener('click', function(){
-	    alert('Login Successful \n You have logged in with a username of "'+username.value+'"');
+	    alert('You have logged in as "'+username.value+'"');
 	    username.blur();
 	    password.blur(); 
 		});
@@ -76,7 +76,7 @@ function Login(){
 	viewLogin.add(buttonGuest);
 	
 	buttonGuest.addEventListener('click', function(){
-	    alert('Login Successful \n You have logged in as Guest');
+	    alert('You have logged in as Guest');
 	    username.blur();
 	    password.blur(); 
 		});
